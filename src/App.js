@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Employee_Data from "./crud-operation/Employee_Data";
+import Emp_Datail from "./crud-operation/Emp_Datail";
+import SelfTask_01 from "./crud-operation/SelfTask_01";
+import Self_Work from "./Work/Self_Work";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Employee_Data />
+      {/* <Emp_Datail /> */}
+      {/* <SelfTask_01 /> */}
+      {/* <Self_Work /> */}
+    </>
   );
 }
 
