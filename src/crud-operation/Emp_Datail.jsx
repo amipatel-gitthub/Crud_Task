@@ -11,7 +11,6 @@ export default function Emp_Datail() {
       [e.target.name]: e.target.value,
       [e.target.pno]: e.target.value,
       [e.target.empid]: e.target.value,
-        [e.target.selectedOption]: e.target.value,
       [e.target.salary]: e.target.value,
       [e.target.days]: e.target.value,
     });
@@ -154,7 +153,7 @@ export default function Emp_Datail() {
             <th className="text-secondary">Emp-Id </th>
             <th className="text-secondary">Emp-name </th>
             <th className="text-secondary">Phone-no. </th>
-            <th className="text-secondary">Skill </th>
+           
             <th className="text-secondary">Salary </th>
             <th className="text-secondary">Working Days </th>
             <th className="text-secondary">Crud Operation </th>
@@ -166,7 +165,7 @@ export default function Emp_Datail() {
               <td>{record.empid}</td>
               <td>{record.name}</td>
               <td>{record.pno}</td>
-              <td>{record.selectedOption}</td>
+
               <td>{record.salary}</td>
               <td>{record.days}</td>
               <td>
