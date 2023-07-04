@@ -27,7 +27,7 @@ export default function Table_Form() {
     const createRecord = (data) => {
         const id = Date.now().toString();
         const newRecord = { id, ...data };
-        setRecords([ ...records, newRecord ]);
+        setRecords([...records, newRecord]);
     };
 
     const updateRecord = (data) => {

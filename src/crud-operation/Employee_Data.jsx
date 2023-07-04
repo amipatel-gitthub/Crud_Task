@@ -8,7 +8,7 @@ function Employee_Data() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-      [e.target.salary]: e.target.value,
+    
 
     });
   };
