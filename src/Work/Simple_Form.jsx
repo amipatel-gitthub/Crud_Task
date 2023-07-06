@@ -32,6 +32,8 @@ export default function Simple_Form() {
     return (
         <>
             <form onSubmit={handleSubmit}>
+            <h4 className="text-center">Simple Form</h4>
+                        <hr />
                 <label>Full Name : </label>
                 <input
                     type="text"

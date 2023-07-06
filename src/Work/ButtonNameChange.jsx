@@ -34,7 +34,7 @@ export default function ButtonNameChange() {
     };
 
     const updateRecord = (data) => {
-        const updatedRecord = records.map((record) => 
+        const updatedRecord = records.map((record) =>
             record.id === data.id ? { ...record, ...data } : record
         );
 
@@ -60,6 +60,8 @@ export default function ButtonNameChange() {
         <>
             <div className="container">
                 <form onSubmit={handleSubmit}>
+                    <h4 className="text-center">Button Name Change</h4>
+                    <hr />
                     <label>Name :</label>
                     <input
                         type="text"

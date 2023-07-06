@@ -55,6 +55,8 @@ export default function ChatGpt() {
     return (
         <>
             <form onSubmit={handleSubmit}>
+            <h4 className="text-center">ChatGPT</h4>
+                        <hr />
                 <label>Full Name: </label>
                 <input
                     type="text"

@@ -62,6 +62,8 @@ export default function NameChange() {
             <div className='container'>
 
                 <form onSubmit={handleSubmit}>
+                <h4 className="text-center">Name Change</h4>
+                        <hr />
 
                     <label>Name : </label>
                     <input type='text' name='name'

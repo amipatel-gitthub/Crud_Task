@@ -54,9 +54,9 @@ export default function Form_Validation() {
     return (
         <>
             <div className="container">
-                <div className="mx-auto mt-4 border p-3" style={{ width: "600px" }}>
+            <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
                     <form onSubmit={handleSubmit}>
-                        <h4 className="text-center">Simple Crud operation</h4>
+                        <h4 className="text-center">Form Validation</h4>
                         <hr />
                         <div className="form-outline mb-2">
                             <div className="row">

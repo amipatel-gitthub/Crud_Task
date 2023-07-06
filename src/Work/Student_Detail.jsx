@@ -58,7 +58,7 @@ export default function Student_Detail() {
     return (
         <>
             <div className="container">
-                <div className="mx-auto mt-4 border p-3" style={{ width: "600px" }}>
+                <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
                     <form onSubmit={handleSubmit}>
                         <h4 className="text-center">Student Detail</h4>
                         <hr />

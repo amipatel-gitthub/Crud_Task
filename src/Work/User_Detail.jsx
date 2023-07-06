@@ -59,9 +59,9 @@ export default function User_Detail() {
     return (
         <>
             <div className="container">
-                <div className="mx-auto mt-4 border p-3" style={{ width: "600px" }}>
+            <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
                     <form onSubmit={handleSubmit}>
-                        <h4 className="text-center">Simple Crud operation</h4>
+                        <h4 className="text-center">User Detail</h4>
                         <hr />
                         <div className="form-outline mb-2">
                             <div className="row">
@@ -144,6 +144,7 @@ export default function User_Detail() {
                             <th className="text-secondary">Phone-no. </th>
                             <th className="text-secondary">Salary </th>
                             <th className="text-secondary">Working Days </th>
+                            <th className="text-secondary">Action..</th>
                         </tr>
                     </thead>
                     <tbody>

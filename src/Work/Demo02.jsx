@@ -57,6 +57,8 @@ export default function Demo02() {
         <>
             <div className="container">
                 <form onSubmit={handleSubmit}>
+                <h4 className="text-center">Demo - 02</h4>
+                        <hr />
                     <label>Name : </label>
                     <input
                         type="text"

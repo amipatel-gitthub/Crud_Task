@@ -1,181 +1,192 @@
 import React, { useState } from "react";
 
 export default function Simple_CrudTask() {
-
-  const [formdata, setFormData] = useState({
-    id : "",
-    name : "",
-    pno : "",
-    salary : "", 
-    days:""
-  })
-  const [records, setRecords] = useState([])
+  const [formData, setFormData] = useState({});
+  const [records, setRecords] = useState([]);
+  const [isEditing, setIsEditing] = useState("");
 
   const handleChange = (e) => {
     setFormData({
-      ...formdata,
-    
+      ...formData,
       [e.target.name]: e.target.value,
-     
-    })
-  }
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    console.log("Employee Data : ", formData);
 
-    if (formdata.id) {
-      updateRecord(formdata)
-    }
-    else {
-      createRecord(formdata)
+    if (isEditing) {
+      updateRecord(formData);
+      setIsEditing(false);
+    } else {
+      createRecord(formData);
     }
 
-    setFormData({})
-  }
+    setFormData({});
+  };
 
   const createRecord = (data) => {
     const id = Date.now().toString();
-    const newRecord = { id, ...data };
-    setRecords([ ...records, newRecord ])
-  }
+    const newRecord = { ...data, id };
+    setRecords([...records, newRecord]);
+  };
 
   const updateRecord = (data) => {
-    const updateRecords = records.map((record) =>
-      record.id == data.id ? { ...record, ...data } : record
+    const up_data = records.map((record) =>
+      record.id === data.id ? { ...record, ...data } : record
     );
-
-    setRecords(updateRecords)
-  }
+    setRecords(up_data);
+  };
 
   const deleteRecord = (id) => {
-    const updatedRecords = records.filter((record) => record.id !== id);
-    setRecords(updatedRecords);
-  }
+    const up_data = records.filter((record) => record.id !== id);
+
+    setRecords(up_data);
+  };
 
   const handleEdit = (record) => {
-    setFormData(record)
-  }
+    setFormData(record);
+    setIsEditing(true);
+  };
 
   const handleDelete = (id) => {
-    deleteRecord(id)
-  }
-
-
+    deleteRecord(id);
+  };
 
   return (
-    <div className="container">
-      <div className="mx-auto mt-4 border p-3" style={{ width: "600px" }}>
-        <form onSubmit={handleSubmit}>
-          <h4 className="text-center">Simple Crud operation</h4>
-          <hr />
-          <div className="form-outline mb-2">
-            <div className="row">
-              <div className="col-3">
-                <label className="fw-bolder">User Id : </label>
-              </div>
-              <div className="col-9">
-                <input type="number" className="form-control" name="id"
-                  value={formdata.id || ""}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-outline mb-2">
-            <div className="row">
-              <div className="col-3">
-                <label className="fw-bolder">User name : </label>
-              </div>
-              <div className="col-9">
-                <input type="text " className="form-control" name="name"
-                  value={formdata.name || ""}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-outline mb-2">
-            <div className="row">
-              <div className="col-3">
-                <label className="fw-bolder">Phone-no. : </label>
-              </div>
-              <div className="col-9">
-                <input type="number" className="form-control" name="pno"
-                  value={formdata.pno || ""}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-outline mb-2">
-            <div className="row">
-              <div className="col-3">
-                <label className="fw-bolder">Salary : </label>
-              </div>
-              <div className="col-9">
-                <input type="number" className="form-control" name="salary"
-                  value={formdata.salary || ""}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="form-outline mb-2">
-            <div className="row">
-              <div className="col-3">
-                <label className="fw-bolder">Working Days : </label>
-              </div>
-              <div className="col-9">
-                <input type="number" className="form-control" name="days"
-                  value={formdata.days || ""}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="m-auto text-center">
-            <button
-              type="submit"
-              className="btn btn-primary btn-block mb-4 px-3"
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
-      </div>
+    <>
 
-      <table className="table  table-hover table-bordered mt-5 text-center mb-3">
-        <thead>
-          <tr>
-            <th className="text-secondary">User Id</th>
-            <th className="text-secondary">User name </th>
-            <th className="text-secondary">Phone-no. </th>
-            <th className="text-secondary">Salary </th>
-            <th className="text-secondary">Working Days </th>
-            <th className="text-secondary">Crud </th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.map((record) => {
-            return (
-              <tr >
-                <td>{record.id}</td>
+      <div className="container">
+        <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
+          <form onSubmit={handleSubmit}>
+            <h4 className="text-center">Simple Crud operation</h4>
+            <hr />
+            <div className="form-outline mb-2">
+              <div className="row">
+                <div className="col-3">
+                  <label className="fw-bolder">User Id : </label>
+                </div>
+                <div className="col-9">
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="emp_id"
+                    value={formData.emp_id || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-outline mb-2">
+              <div className="row">
+                <div className="col-3">
+                  <label className="fw-bolder">User name : </label>
+                </div>
+                <div className="col-9">
+                  <input
+                    type="text "
+                    className="form-control"
+                    name="name"
+                    value={formData.name || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-outline mb-2">
+              <div className="row">
+                <div className="col-3">
+                  <label className="fw-bolder">Phone-no. : </label>
+                </div>
+                <div className="col-9">
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="pno"
+                    value={formData.pno || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-outline mb-2">
+              <div className="row">
+                <div className="col-3">
+                  <label className="fw-bolder">Salary : </label>
+                </div>
+                <div className="col-9">
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="salary"
+                    value={formData.salary || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form-outline mb-2">
+              <div className="row">
+                <div className="col-3">
+                  <label className="fw-bolder">Working Days : </label>
+                </div>
+                <div className="col-9">
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="days"
+                    value={formData.days || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="m-auto text-center">
+              <button
+                type="submit"
+                className="btn btn-primary btn-block mt-2 px-3"
+              >
+                {isEditing ? "Update" : "Add"}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <table className="table  table-hover table-bordered mt-5 text-center mb-3">
+          <thead>
+            <tr>
+              <th className="text-secondary">User Id</th>
+              <th className="text-secondary">User name </th>
+              <th className="text-secondary">Phone-no. </th>
+              <th className="text-secondary">Salary </th>
+              <th className="text-secondary">Working Days </th>
+              <th className="text-secondary">Changes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {records.map((record) => (
+              <tr key={record.id}>
+                <td>{record.emp_id}</td>
                 <td>{record.name}</td>
                 <td>{record.pno}</td>
                 <td>{record.salary}</td>
                 <td>{record.days}</td>
                 <td>
-                  <button type="button" onClick={() => handleEdit(record)}>Edit</button>
-
-                  <button type="button" onClick={() => handleDelete(record.id)}>Delete</button>
+                  <button type="button" onClick={() => handleEdit(record)}>
+                    Edit
+                  </button>
+                  <button type="button" onClick={() => handleDelete(record.id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
-            )
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-          })}
 
-        </tbody>
-      </table>
-    </div>
+    </>
   );
 }

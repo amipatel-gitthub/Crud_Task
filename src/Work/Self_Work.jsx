@@ -23,9 +23,10 @@ export default function Self_Work() {
   return (
     <>
       <div className='container'>
-        <div className='m-auto mt-3 '>
-          <form className='border p-5' onSubmit={handleSubmit}>
-            <h3 className='text-center text-info'>Simple Crud Form</h3><hr />
+        <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
+          <form className='' onSubmit={handleSubmit}>
+            <h4 className="text-center">Self Work</h4>
+            <hr />
 
             <label className='fw-bolder'>Name : </label>
             <input type='text' className='form-control' placeholder='enter username'

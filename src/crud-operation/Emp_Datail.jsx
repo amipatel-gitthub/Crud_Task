@@ -9,21 +9,13 @@ export default function Emp_Datail() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-      [e.target.pno]: e.target.value,
-      [e.target.empid]: e.target.value,
-      [e.target.salary]: e.target.value,
-      [e.target.days]: e.target.value,
     });
   };
-
-  // function handleDropdownChange(event) {
-  //   setSelectedOption(event.target.value);
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.id) {
+    if (formData.empid) {
       updateRecord(formData);
     } else {
       createRecord(formData);
@@ -38,10 +30,10 @@ export default function Emp_Datail() {
   };
 
   const updateRecord = (data) => {
-    const updateRecords = records.map((record) =>
-      record.id == data.id ? { ...record, ...data } : record
+    const updatedRecords = records.map((record) =>
+      record.id === data.id ? { ...record, ...data } : record
     );
-    setRecords(updateRecords);
+    setRecords(updatedRecords);
   };
 
   const deleteRecord = (id) => {
@@ -59,104 +51,102 @@ export default function Emp_Datail() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="mx-auto col-10 col-md-8 col-lg-6 mb-5">
-          <form onSubmit={handleSubmit}>
-            <h5 className="text-center mt-3">Employee Data</h5> <hr required />
-            <div className="form-outline mb-2">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Full name"
-                required
-                name="name"
-                value={formData.name || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-outline mb-2">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Phone Number"
-                required
-                name="pno"
-                value={formData.pno || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-outline mb-2">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Employee Id No."
-                required
-                name="empid"
-                value={formData.empid || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-outline mb-2">
-              <select
-                className="form-select "
-                value={formData.selectedOption || ""}
-                onChange={handleInputChange}
-
-              >
-                <option selected disabled>
-                  Select Option Here
-                </option>
-                <option>Full Stack Developer</option>
-                <option>Front End Developer</option>
-                <option>Back End Developer</option>
-                <option>Web Designer</option>
-                <option>Graphics Designer</option>
-                <option>SEO</option>
-              </select>
-            </div>
-            <div className="form-outline mb-2">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Salary"
-                required
-                name="salary"
-                value={formData.salary || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-outline mb-3">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Working days"
-                min="1"
-                max="31"
-                required
-                name="days"
-                value={formData.days || ""}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="text-center">
-              <button type="submit" className="btn btn-primary btn-block ">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+      <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
+        <form onSubmit={handleSubmit}>
+          <h4 className="text-center mt-3">Employee Detail</h4>
+          <hr />
+          <div className="form-outline mb-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Full name"
+              required
+              name="name"
+              value={formData.name || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-outline mb-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Phone Number"
+              required
+              name="pno"
+              value={formData.pno || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-outline mb-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Employee Id No."
+              required
+              name="empid"
+              value={formData.empid || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-outline mb-2">
+            <select
+              className="form-select"
+              value={formData.selectedOption || ""}
+              name="selectedOption"
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Option Here
+              </option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="Front End Developer">Front End Developer</option>
+              <option value="Back End Developer">Back End Developer</option>
+              <option value="Web Designer">Web Designer</option>
+              <option value="Graphics Designer">Graphics Designer</option>
+              <option value="SEO">SEO</option>
+            </select>
+          </div>
+          <div className="form-outline mb-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Salary"
+              required
+              name="salary"
+              value={formData.salary || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-outlinemb-3">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Working days"
+              min="1"
+              max="31"
+              required
+              name="days"
+              value={formData.days || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
 
-      <table className="table  table-hover table-bordered mt-3 text-center mb-3">
+      <table className="table table-hover table-bordered mt-3 text-center mb-3">
         <thead>
           <tr>
-            <th className="text-secondary">Emp-Id </th>
-            <th className="text-secondary">Emp-name </th>
-            <th className="text-secondary">Phone-no. </th>
-           
-            <th className="text-secondary">Salary </th>
-            <th className="text-secondary">Working Days </th>
-            <th className="text-secondary">Crud Operation </th>
+            <th className="text-secondary">Emp-Id</th>
+            <th className="text-secondary">Emp-name</th>
+            <th className="text-secondary">Phone-no.</th>
+            <th className="text-secondary">Salary</th>
+            <th className="text-secondary">Working Days</th>
+            <th className="text-secondary">Crud Operation</th>
           </tr>
         </thead>
         <tbody>
@@ -165,7 +155,6 @@ export default function Emp_Datail() {
               <td>{record.empid}</td>
               <td>{record.name}</td>
               <td>{record.pno}</td>
-
               <td>{record.salary}</td>
               <td>{record.days}</td>
               <td>

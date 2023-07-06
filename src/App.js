@@ -13,24 +13,37 @@ import Demo02 from "./Work/Demo02";
 import NameChange from "./Work/NameChange";
 import ButtonNameChange from "./Work/ButtonNameChange";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Main from "./Main";
+import Navbar from "./Navbar";
+
 function App() {
   return (
     <>
-      {/* <Employee_Data /> */}
-      {/* <Emp_Datail /> */}
-      {/* <Self_Work /> */}
-      {/* <Simple_CrudTask /> */}
-      {/* <Table_Form /> */}
-      {/* <User_Detail /> */}
-      {/* <Form_Validation /> */}
-      {/* <Student_Detail /> */}
-      {/* <Demo01 /> */}
-      {/* <Simple_Form /> */}
-      {/* <ChatGpt /> */}
-      {/* <Demo02 /> */}
-      {/* <NameChange /> */}
-      <ButtonNameChange />
-      
+      <BrowserRouter>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/Employee_Data" element={<Employee_Data />} />
+          <Route path="/Emp_Datail" element={<Emp_Datail />} />
+          <Route path="/Self_Work" element={<Self_Work />} />
+          <Route path="/Simple_CrudTask" element={<Simple_CrudTask />} />
+          <Route path="/Table_Form" element={<Table_Form />} />
+          <Route path="/User_Detail" element={<User_Detail />} />
+          <Route path="/Form_Validation" element={<Form_Validation />} />
+          <Route path="/Student_Detail" element={<Student_Detail />} />
+          <Route path="/Demo01" element={<Demo01 />} />
+          <Route path="/Simple_Form" element={<Simple_Form />} />
+          <Route path="/ChatGpt" element={<ChatGpt />} />
+          <Route path="/Demo02" element={<Demo02 />} />
+          <Route path="/NameChange" element={<NameChange />} />
+          <Route path="/ButtonNameChange" element={<ButtonNameChange />} />
+          <Route path="/*" element={<h1>404 error </h1>} />
+        </Routes>
+        {/* <div class="position-relative">
+        <a href="/" className="position-absolute top-50 start-0 translate-middle-y">Back to Home....</a>
+        </div> */}
+      </BrowserRouter>
     </>
   );
 }

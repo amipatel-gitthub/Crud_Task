@@ -55,6 +55,8 @@ export default function Demo01(changeTextAndColor) {
     <>
       <div className="mt-2">
         <form onSubmit={handleSubmit}>
+        <h4 className="text-center">Demo - 01</h4>
+                        <hr />
           <label>Name : </label>
           <input
             type="text"

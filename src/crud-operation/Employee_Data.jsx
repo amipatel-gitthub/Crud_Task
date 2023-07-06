@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Employee_Data() {
   const [formData, setFormData] = useState({});
@@ -8,8 +8,6 @@ function Employee_Data() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    
-
     });
   };
 
@@ -51,44 +49,52 @@ function Employee_Data() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name || ''}
-            onChange={handleInputChange}
-          />
-          <label>salary:</label>
-          <input
-            type="text"
-            name="salary"
-            value={formData.salary || ''}
-            onChange={handleInputChange}
-          />
-        </div>
-        {/* Add more form input fields for other data */}
-        <button type="submit">Submit</button>
-      </form>
-
-      <table>
+      <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
+      <h4 className="text-center">Employee Data</h4>
+                        <hr />
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name || ""}
+              onChange={handleInputChange}
+            />
+            <label>salary:</label>
+            <input
+              type="text"
+              name="salary"
+              value={formData.salary || ""}
+              onChange={handleInputChange}
+            />
+          </div>
+          {/* Add more form input fields for other data */}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <table className="table  table-hover table-bordered mt-3 text-center mb-3 mx-auto" style={{ width: "600px" }}>
         <thead>
           <tr>
             <th>Name</th>
             {/* Add more table headers for other data */}
+            <th>Salary</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {records.map((record) => (
             <tr key={record.id}>
-              <td>{record.name}</td>
+              <td >{record.name}</td>
               <td>{record.salary}</td>
               {/* Add more table cells for other data */}
               <td>
-                <button onClick={() => handleEdit(record)}><i className="bi bi-pencil-square"></i></button>{' '}
-                <button onClick={() => handleDelete(record.id)}><i className="bi bi-trash3-fill"></i></button>
+                <button onClick={() => handleEdit(record)}>
+                  <i className="bi bi-pencil-square"></i>
+                </button>{" "}
+                <button onClick={() => handleDelete(record.id)}>
+                  <i className="bi bi-trash3-fill"></i>
+                </button>
               </td>
             </tr>
           ))}
@@ -99,10 +105,6 @@ function Employee_Data() {
 }
 
 export default Employee_Data;
-
-
-  
-
 
 // import React, { useState } from "react";
 
@@ -175,7 +177,7 @@ export default Employee_Data;
 //                         </tr>
 //                     </thead>
 //                     <tbody>
-                     
+
 //                         {prpdata.map((value)=> {
 //                             return(
 //                                 <tr className="border">
@@ -202,7 +204,7 @@ export default Employee_Data;
 
 //                     </tbody>
 //                 </table>
-              
+
 //             </div>
 //             {/* <td>
 //                                 <button type="button" className="btn btn-light me-2"><i className="bi bi-pencil-square"></i></button>
