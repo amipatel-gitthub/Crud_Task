@@ -12,6 +12,10 @@ import ChatGpt from "./Work/ChatGpt";
 import Demo02 from "./Work/Demo02";
 import NameChange from "./Work/NameChange";
 import ButtonNameChange from "./Work/ButtonNameChange";
+import Local_data from './LocalStorage/Data/Local_data'
+import Local_User from "./LocalStorage/user/Local_User";
+import User_Pagination from "./Pagination/User_Pagination";
+
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./Main";
@@ -21,7 +25,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/Employee_Data" element={<Employee_Data />} />
@@ -38,6 +42,9 @@ function App() {
           <Route path="/Demo02" element={<Demo02 />} />
           <Route path="/NameChange" element={<NameChange />} />
           <Route path="/ButtonNameChange" element={<ButtonNameChange />} />
+          <Route path="/Local_data" element={<Local_data />} />
+          <Route path="/Local_User" element={<Local_User />} />
+          <Route path="/User_Pagination" element={<User_Pagination />} />
           <Route path="/*" element={<h1>404 error </h1>} />
         </Routes>
         {/* <div class="position-relative">

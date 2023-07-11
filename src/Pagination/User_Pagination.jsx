@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-export default function User_Detail() {
+export default function User_Pagination() {
 
     const [formData, setFormData] = useState({})
     const [records, setRecords] = useState([])
+    const [isEditing, setIsEditing] = useState('')
 
     const handleChange = (e) => {
         setFormData({
@@ -13,42 +14,43 @@ export default function User_Detail() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("User Information in console...", formData)
+        e.preventDefault();
 
-        if (formData.id) {
+        console.log("Employee Data : ", formData);
+
+        if (isEditing) {
             updateRecord(formData)
+            setIsEditing(false)
         }
         else {
             createRecord(formData)
         }
-
         setFormData({})
     }
 
     const createRecord = (data) => {
         const id = Date.now().toString();
-        const newRecord = { id, ...data }
+        const newRecord = { ...data, id }
         setRecords([...records, newRecord])
     }
 
     const updateRecord = (data) => {
-        const updateRecords = records.map((record) =>
+        const up_Data = records.map((record) =>
             record.id == data.id ? { ...record, ...data } : record
-        );
+        )
 
-        setRecords( updateRecords )
+        setRecords(up_Data)
     }
 
     const deleteRecord = (id) => {
-        const updateRecords = records.filter((record) => record.id !== id)
+        const up_Data = records.filter((record) => record.id !== id)
 
-        setRecords( updateRecords )
-
+        setRecords(up_Data)
     }
 
     const handleEdit = (record) => {
         setFormData(record)
+        setIsEditing(true)
     }
 
     const handleDelete = (id) => {
@@ -56,12 +58,13 @@ export default function User_Detail() {
     }
 
 
+
     return (
         <>
             <div className="container">
-            <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
+                <div className="mx-auto mt-4 border p-3" style={{ width: "600px" }}>
                     <form onSubmit={handleSubmit}>
-                        <h4 className="text-center">User Detail</h4>
+                        <h4 className="text-center">Simple Crud operation</h4>
                         <hr />
                         <div className="form-outline mb-2">
                             <div className="row">
@@ -69,7 +72,7 @@ export default function User_Detail() {
                                     <label className="fw-bolder">User Id : </label>
                                 </div>
                                 <div className="col-9">
-                                    <input type="number" className="form-control" name="uid"
+                                    <input type="text" className="form-control" name="uid"
                                         value={formData.uid || ""}
                                         onChange={handleChange}
                                     />
@@ -95,7 +98,7 @@ export default function User_Detail() {
                                     <label className="fw-bolder">Phone-no. : </label>
                                 </div>
                                 <div className="col-9">
-                                    <input type="number" className="form-control" name="pno"
+                                    <input type="text" className="form-control" name="pno"
                                         value={formData.pno || ""}
                                         onChange={handleChange}
                                     />
@@ -108,7 +111,7 @@ export default function User_Detail() {
                                     <label className="fw-bolder">Salary : </label>
                                 </div>
                                 <div className="col-9">
-                                    <input type="number" className="form-control" name="salary"
+                                    <input type="text" className="form-control" name="salary"
                                         value={formData.salary || ""}
                                         onChange={handleChange}
                                     />
@@ -121,7 +124,7 @@ export default function User_Detail() {
                                     <label className="fw-bolder">Working Days : </label>
                                 </div>
                                 <div className="col-9">
-                                    <input type="number" className="form-control" name="days"
+                                    <input type="text" className="form-control" name="days"
                                         value={formData.days || ""}
                                         onChange={handleChange}
                                     />
@@ -130,7 +133,7 @@ export default function User_Detail() {
                         </div>
                         <div className="m-auto text-center">
                             <button type="submit" className="btn btn-primary btn-block mb-4 px-3">
-                                Sign up
+                                {isEditing ? "Update" : "Print"}
                             </button>
                         </div>
                     </form>
@@ -144,7 +147,7 @@ export default function User_Detail() {
                             <th className="text-secondary">Phone-no. </th>
                             <th className="text-secondary">Salary </th>
                             <th className="text-secondary">Working Days </th>
-                            <th className="text-secondary">Action</th>
+                            <th className="text-secondary">Change</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -156,17 +159,15 @@ export default function User_Detail() {
                                 <td>{record.salary}</td>
                                 <td>{record.days}</td>
                                 <td>
-                                    <button type="button" onClick={() => handleEdit(record)}>Edit</button>
-                                    <button type="button" onClick={() => handleDelete(record.id)}>Delete</button>
+                                    <button type='button' onClick={() => handleEdit(record)}>Edit</button>
+                                    <button type='button' onClick={() => handleDelete(record.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
-
                     </tbody>
                 </table>
             </div>
+
         </>
     )
 }
-
-

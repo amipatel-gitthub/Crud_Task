@@ -38,10 +38,6 @@ export default function Main() {
                             </tr>
                         </tbody>
                     </table>
-
-
-
-
                 </div>
 
                 <div class="air air1"></div>

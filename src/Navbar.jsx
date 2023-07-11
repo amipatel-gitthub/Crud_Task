@@ -2,6 +2,7 @@ import React from 'react'
 import l1 from './assets/logo.png'
 import l2 from './assets/logo_bg.png'
 import "./Abc.css";
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
@@ -65,10 +66,28 @@ export default function Navbar() {
                                     <li><a className="dropdown-item fst-italic" href="/User_Detail">User Detail </a></li>
                                 </ul>
                             </li>
+
+                            <li className="nav-item dropdown px-2">
+                                <a className="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Local Storage Data
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item fst-italic" href="/Local_data">Local Data</a></li>
+                                    <li><a className="dropdown-item fst-italic" href="/Local_User">Local User</a></li>
+                                </ul>
+                            </li>
+
+                            <li className="nav-item dropdown px-2">
+                                <a className="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Pagination
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item fst-italic" href="/User_Pagination">User Pagination</a></li>
+
+                                </ul>
+                            </li>
                         </ul>
-
                     </div>
-
                 </div>
             </nav>
         </>

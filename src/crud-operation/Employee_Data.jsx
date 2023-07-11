@@ -47,11 +47,49 @@ function Employee_Data() {
     deleteRecord(id);
   };
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [totalItems] = useState(100); // Assuming you have a total of 100 items
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const displayedItems = records.slice(startIndex, endIndex);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handleItemsPerPageChange = (event) => {
+    const newItemsPerPage = parseInt(event.target.value, 10);
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1); // Reset to the first page when changing items per page
+  };
+
+  const renderPaginationDropdown = () => {
+    return (
+      <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
+        <option value={5}>5 per page</option>
+        <option value={10}>10 per page</option>
+        <option value={20}>20 per page</option>
+      </select>
+    );
+  };
+
   return (
     <div>
       <div className="mx-auto mt-4 form-design p-3" style={{ width: "600px" }}>
-      <h4 className="text-center">Employee Data</h4>
-                        <hr />
+        <h4 className="text-center">Employee Data</h4>
+        <hr />
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -73,7 +111,30 @@ function Employee_Data() {
           <button type="submit">Submit</button>
         </form>
       </div>
-      <table className="table  table-hover table-bordered mt-3 text-center mb-3 mx-auto" style={{ width: "600px" }}>
+      <div className="pagination-container d-flex">
+        <div className="px-3">
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+        </div>
+        <div className="px-3">
+          <div className="dropdown-container">
+            Items per page: {renderPaginationDropdown()}
+          </div>
+        </div>
+        <div className="px-3">
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <table
+        className="table  table-hover table-bordered mt-3 text-center mb-3 mx-auto"
+        style={{ width: "600px" }}
+      >
         <thead>
           <tr>
             <th>Name</th>
@@ -83,9 +144,9 @@ function Employee_Data() {
           </tr>
         </thead>
         <tbody>
-          {records.map((record) => (
+          {displayedItems.map((record) => (
             <tr key={record.id}>
-              <td >{record.name}</td>
+              <td>{record.name}</td>
               <td>{record.salary}</td>
               {/* Add more table cells for other data */}
               <td>
